@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes
 {
-    internal class Mage
+    public class ArmorType
     {
     }
 }
