@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes
 {
-    public enum HeroType
+    internal class Slot
     {
-        Mage,
-        Ranger,
-        Rogue,
-        Warrior
     }
 }
