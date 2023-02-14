@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPGHeroes
+namespace RPGHeroes.enums
 {
-    public class ArmorType
+    public enum Slots
     {
+        Weapon,
+        Head,
+        Body,
+        Legs
     }
 }

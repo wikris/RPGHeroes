@@ -15,9 +15,15 @@ namespace RPGHeroes.Hero
 
         public HeroAttribute(int strength, int dexterity, int intelligence)
         {
-            Strength = strength;
-            Dexterity = dexterity;
-            Intelligence = intelligence;
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Intelligence = intelligence;
+        }
+
+        public HeroAttribute AddTwoHeroAttributeForSum(HeroAttribute old, HeroAttribute newHerosAttribute)
+        {
+            HeroAttribute heroAttribute = old + newHerosAttribute;
+            return heroAttribute;
         }
 
         public static HeroAttribute operator +(HeroAttribute lhs, HeroAttribute rhs)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGHeroes.enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,15 @@ namespace RPGHeroes.Hero
         public Rogue(string name) : base(name)
         {
             this.Name = name;
+            //this.ValidWeaponTypes = new string[] { WeaponType.Dagger.ToString(), WeaponType.Sword.ToString() };
+           //this.ValidArmorTypes = new string[] { ArmorType.Leather.ToString(), ArmorType.Mail.ToString() };
         }
 
         public override void LevelUp()
         {
             this.Level++;
-            this.Attributes += new HeroAttribute(1,4,1);
+            HeroAttribute levelingUpHeroAttribute = new HeroAttribute(1, 4, 1);
+            this.LevelAttributes += levelingUpHeroAttribute;
         }
 
     }

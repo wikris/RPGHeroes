@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RPGHeroes.enums;
+using RPGHeroes.exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,14 +14,19 @@ namespace RPGHeroes.Hero
         public Mage(string name) : base(name)
         {
             this.Name = name;
-            this.Attributes = new HeroAttribute(1, 1, 8);
+            this.LevelAttributes = new HeroAttribute(1, 1, 8);
+            this.ValidWeaponTypes = new WeaponType[] { WeaponType.Staff, WeaponType.Wand };
+            this.ValidArmorTypes = new ArmorType[] { ArmorType.Cloth };
+            //this.ValidArmorTypes = new string[] { ArmorType.Cloth.ToString() };
         }
 
         public override void LevelUp()
         {
             this.Level++;
-            this.Attributes += new HeroAttribute(1, 1, 5);
+            HeroAttribute levelingUpHeroAttribute = new HeroAttribute(1, 1, 5);
+            this.LevelAttributes += levelingUpHeroAttribute;
         }
 
+        
     }
 }
