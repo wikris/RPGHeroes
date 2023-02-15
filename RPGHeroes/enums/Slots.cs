@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.enums
 {
+    
     public enum Slots
     {
         Weapon,

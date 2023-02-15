@@ -13,10 +13,12 @@ namespace RPGHeroes
         public int RequiredLevel { get; set; }
         public Slots Slot { get; set; }
 
-        public Item(string name, int requiredLevel)
+
+        public Item(string name, int requiredLevel, Slots slot)
         {
             Name = name;
             RequiredLevel = requiredLevel;
+            Slot = slot;
         }
     }
 }

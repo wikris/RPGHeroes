@@ -9,12 +9,12 @@ namespace RPGHeroes.Hero
 {
     public class Rogue:Hero
     {
-        private HeroAttribute attributes = new HeroAttribute(2, 6, 1);
         public Rogue(string name) : base(name)
         {
             this.Name = name;
-            //this.ValidWeaponTypes = new string[] { WeaponType.Dagger.ToString(), WeaponType.Sword.ToString() };
-           //this.ValidArmorTypes = new string[] { ArmorType.Leather.ToString(), ArmorType.Mail.ToString() };
+            this.LevelAttributes = new HeroAttribute(2, 6, 1);
+            this.ValidWeaponTypes = new WeaponType[] { WeaponType.Dagger, WeaponType.Sword };
+            this.ValidArmorTypes = new ArmorType[] { ArmorType.Leather, ArmorType.Mail };
         }
 
         public override void LevelUp()
@@ -22,6 +22,20 @@ namespace RPGHeroes.Hero
             this.Level++;
             HeroAttribute levelingUpHeroAttribute = new HeroAttribute(1, 4, 1);
             this.LevelAttributes += levelingUpHeroAttribute;
+        }
+
+        public override double Damage()
+        {
+            var equippedWeapon = Equipment.Where(kvp => kvp.Key == Slots.Weapon).Select(kvp => (Weapon?)kvp.Value).ToArray();
+
+            if (equippedWeapon.Length == 0)
+            {
+                return 1;
+            }
+
+            double damage = Math.Round(equippedWeapon[0].WeaponDamage * (1 + (double)TotalAttributes().Dexterity / (double)100), 2);
+
+            return damage;
         }
 
     }

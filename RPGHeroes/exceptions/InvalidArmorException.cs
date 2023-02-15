@@ -10,6 +10,6 @@ namespace RPGHeroes.exceptions
     {
         public InvalidArmorException() { }
         public InvalidArmorException(string? message) : base(message) { }
-        public override string Message => "Exception: Invalid armor type for this type of Hero or your Hero's level is too low for that weapon..";
+        public override string Message => "Exception: Invalid armor type for this type of Hero.";
     }
 }

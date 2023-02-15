@@ -9,10 +9,10 @@ namespace RPGHeroes.Hero
 {
     public class Armor : Item
     {
-        HeroAttribute ArmorAttribute { get; set; }
+        public HeroAttribute ArmorAttribute { get; set; }
         public ArmorType ArmorType{ get; set; }
 
-        public Armor(string name, int requiredLevel, ArmorType armorType, HeroAttribute armorAttributes, Slots slot) : base(name, requiredLevel)
+        public Armor(string name, int requiredLevel, Slots slot, ArmorType armorType, HeroAttribute armorAttributes) : base(name, requiredLevel, slot)
         {
             this.ArmorAttribute = armorAttributes;
             this.ArmorType = armorType;
