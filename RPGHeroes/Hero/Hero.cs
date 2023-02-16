@@ -21,14 +21,12 @@ namespace RPGHeroes.Hero
         public Dictionary<Slots, Item?> Equipment  { get; set; }
         public WeaponType[] ValidWeaponTypes { get; set; }
         public ArmorType[] ValidArmorTypes { get; set; }
-        public StringBuilder HerosState { get; set; }
 
         public Hero(string name)
         {
             this.Name = name;
             this.Level = 1;
             this.Equipment = new Dictionary<Slots, Item?>();
-            this.HerosState= new StringBuilder();
         }
 
         public virtual void LevelUp() {}

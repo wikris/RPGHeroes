@@ -35,9 +35,9 @@ namespace RPGHeroes.Hero
                 return 1;
             }
             
-            double damage = Math.Round(equippedWeapon[0].WeaponDamage * (1 + (double)TotalAttributes().Intelligence / (double)100), 2);
+            double HeroDamage = Math.Round(equippedWeapon[0].WeaponDamage * (1 + (double)TotalAttributes().Intelligence / (double)100), 2);
             
-            return damage;
+            return HeroDamage;
         }
     }
 }
