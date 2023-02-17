@@ -12,6 +12,7 @@ namespace RPGHeroes
         public int WeaponDamage { get; set; }
         public WeaponType type { get; set; }
         
+        // Creates new Weapon
         public Weapon(string name, int requiredLevel, Slots slot, WeaponType weaponType, int damage) : base(name,requiredLevel, slot)
         { 
             this.type = weaponType;

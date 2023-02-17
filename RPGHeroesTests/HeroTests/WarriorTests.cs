@@ -11,84 +11,84 @@ using RPGHeroes.exceptions;
 
 namespace RPGHeroesTests.HeroTests
 {
-    public class RangerTests
+    public class WarriorTests
     {
-        Hero ranger = new Ranger("Ralph");
+        Hero warrior = new Warrior("Maximus");
 
         [Fact]
-        public void Ranger_CreatingRangerShouldAddCorrectName()
+        public void Warrior_CreatingWarriorShouldAddCorrectName()
         {
             // Arrange
-            string expected = "Ralph";
+            string expected = "Maximus";
 
             // Act
-            var actual = ranger.Name;
+            var actual = warrior.Name;
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void Ranger_CreatingRangerShouldAddHerousLevelForOne()
+        public void Warrior_CreatingWarriorShouldAddHerousLevelForOne()
         {
             // Arrenge
             int expected = 1;
 
             // Act
-            var actual = ranger.Level;
+            var actual = warrior.Level;
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void Ranger_CreatingRangerShouldAddCorrectStartingStrengthToLevelAttributes()
+        public void Warrior_CreatingWarriorShouldAddCorrectStartingStrengthToLevelAttributes()
         {
             // Arrenge
-            int expected = 1;
+            int expected = 5;
 
             // Act
-            var actual = ranger.LevelAttributes.Strength;
+            var actual = warrior.LevelAttributes.Strength;
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void Ranger_CreatingRangerShouldAddCorrectStartingDexterityToLevelAttributes()
-        {
-            // Arrenge
-            int expected = 7;
-
-            // Act
-            var actual = ranger.LevelAttributes.Dexterity;
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Ranger_CreatingRangerShouldAddCorrectStartingIntelligenceToLevelAttributes()
-        {
-            // Arrenge
-            int expected = 1;
-
-            // Act
-            var actual = ranger.LevelAttributes.Intelligence;
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void LevelUp_IncreasingMagesLevelByOneShouldReturnCurrentLevelPlusOne()
+        public void Warrior_CreatingWarriorShouldAddCorrectStartingDexterityToLevelAttributes()
         {
             // Arrenge
             int expected = 2;
 
             // Act
-            ranger.LevelUp();
-            var actual = ranger.Level;
+            var actual = warrior.LevelAttributes.Dexterity;
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Warrior_CreatingWarriorShouldAddCorrectStartingIntelligenceToLevelAttributes()
+        {
+            // Arrenge
+            int expected = 1;
+
+            // Act
+            var actual = warrior.LevelAttributes.Intelligence;
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void LevelUp_IncreasingWarriorsLevelByOneShouldReturnCurrentLevelPlusOne()
+        {
+            // Arrenge
+            int expected = 2;
+
+            // Act
+            warrior.LevelUp();
+            var actual = warrior.Level;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -99,11 +99,11 @@ namespace RPGHeroesTests.HeroTests
         public void LevelUp_LevellingUpShouldIncreaseLevelAttributeStrength()
         {
             // Arrenge
-            int expected = 2;
+            int expected = 8;
 
             // Act
-            ranger.LevelUp();
-            var actual = ranger.LevelAttributes.Strength;
+            warrior.LevelUp();
+            var actual = warrior.LevelAttributes.Strength;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -113,11 +113,11 @@ namespace RPGHeroesTests.HeroTests
         public void LevelUp_LevellingUpShouldIncreaseLevelAttributeDexterity()
         {
             // Arrenge
-            int expected = 12;
+            int expected = 4;
 
             // Act
-            ranger.LevelUp();
-            var actual = ranger.LevelAttributes.Dexterity;
+            warrior.LevelUp();
+            var actual = warrior.LevelAttributes.Dexterity;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -130,8 +130,8 @@ namespace RPGHeroesTests.HeroTests
             int expected = 2;
 
             // Act
-            ranger.LevelUp();
-            var actual = ranger.LevelAttributes.Intelligence;
+            warrior.LevelUp();
+            var actual = warrior.LevelAttributes.Intelligence;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -141,11 +141,11 @@ namespace RPGHeroesTests.HeroTests
         public void EquipWeapon_EquippedWeaponShouldCorrectName()
         {
             // Arrenge
-            string expected = "Moderate Bow";
+            string expected = "Basic Hammer";
 
             // Act
-            ranger.EquipWeapon("Moderate Bow", 1, Slots.Weapon, WeaponType.Bow, 22);
-            var actual = ranger.Equipment[Slots.Weapon].Name;
+            warrior.EquipWeapon("Basic Hammer", 1, Slots.Weapon, WeaponType.Hammer, 21);
+            var actual = warrior.Equipment[Slots.Weapon]?.Name;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -158,8 +158,8 @@ namespace RPGHeroesTests.HeroTests
             int expected = 1;
 
             // Act
-            ranger.EquipWeapon("Moderate Bow", 1, Slots.Weapon, WeaponType.Bow, 22);
-            var actual = ranger.Equipment[Slots.Weapon].RequiredLevel;
+            warrior.EquipWeapon("Basic Hammer", 1, Slots.Weapon, WeaponType.Hammer, 21);
+            var actual = warrior.Equipment[Slots.Weapon]?.RequiredLevel;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -172,9 +172,9 @@ namespace RPGHeroesTests.HeroTests
             Slots expected = Slots.Weapon;
 
             // Act
-            ranger.EquipWeapon("Moderate Bow", 1, Slots.Weapon, WeaponType.Bow, 22);
-            var equippedWeapon = ranger.Equipment.Where(kvp => kvp.Key == Slots.Weapon).Select(kvp => (Weapon?)kvp.Value).ToArray();
-            var actual = equippedWeapon[0].Slot;
+            warrior.EquipWeapon("Basic Hammer", 1, Slots.Weapon, WeaponType.Hammer, 21);
+            var equippedWeapon = warrior.Equipment.Where(kvp => kvp.Key == Slots.Weapon).Select(kvp => (Weapon?)kvp.Value).ToArray();
+            var actual = equippedWeapon[0]?.Slot;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -184,12 +184,12 @@ namespace RPGHeroesTests.HeroTests
         public void EquipWeapon_EquippedWeaponShouldCorrectWeaponType()
         {
             // Arrenge
-            WeaponType expected = WeaponType.Bow;
+            WeaponType expected = WeaponType.Hammer;
 
             // Act
-            ranger.EquipWeapon("Moderate Bow", 1, Slots.Weapon, WeaponType.Bow, 22);
-            var equippedWeapon = ranger.Equipment.Where(kvp => kvp.Key == Slots.Weapon).Select(kvp => (Weapon?)kvp.Value).ToArray();
-            var actual = equippedWeapon[0].type;
+            warrior.EquipWeapon("Basic Hammer", 1, Slots.Weapon, WeaponType.Hammer, 21);
+            var equippedWeapon = warrior.Equipment.Where(kvp => kvp.Key == Slots.Weapon).Select(kvp => (Weapon?)kvp.Value).ToArray();
+            var actual = equippedWeapon[0]?.type;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -199,12 +199,12 @@ namespace RPGHeroesTests.HeroTests
         public void EquipWeapon_EquippedWeaponShouldCorrectDamage()
         {
             // Arrenge
-            int expected = 22;
+            int expected = 21;
 
             // Act
-            ranger.EquipWeapon("Moderate Bow", 1, Slots.Weapon, WeaponType.Bow, 22);
-            var equippedWeapon = ranger.Equipment.Where(kvp => kvp.Key == Slots.Weapon).Select(kvp => (Weapon?)kvp.Value).ToArray();
-            var actual = equippedWeapon[0].WeaponDamage;
+            warrior.EquipWeapon("Basic Hammer", 1, Slots.Weapon, WeaponType.Hammer, 21);
+            var equippedWeapon = warrior.Equipment.Where(kvp => kvp.Key == Slots.Weapon).Select(kvp => (Weapon?)kvp.Value).ToArray();
+            var actual = equippedWeapon[0]?.WeaponDamage;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -214,11 +214,11 @@ namespace RPGHeroesTests.HeroTests
         public void EquipArmor_EquippedArmorShouldHaveCorrectName()
         {
             // Arrenge
-            string expected = "Golden Boots";
+            string expected = "Hyperior Boots";
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            var actual = ranger.Equipment[Slots.Legs].Name;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            var actual = warrior.Equipment[Slots.Legs].Name;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -231,8 +231,8 @@ namespace RPGHeroesTests.HeroTests
             int expected = 1;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            var actual = ranger.Equipment[Slots.Legs].RequiredLevel;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            var actual = warrior.Equipment[Slots.Legs].RequiredLevel;
             // Assert
             Assert.Equal(expected, actual);
         }
@@ -244,8 +244,8 @@ namespace RPGHeroesTests.HeroTests
             Slots expected = Slots.Legs;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            var actual = ranger.Equipment[Slots.Legs].Slot;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            var actual = warrior.Equipment[Slots.Legs].Slot;
             // Assert
             Assert.Equal(expected, actual);
         }
@@ -254,11 +254,11 @@ namespace RPGHeroesTests.HeroTests
         public void EquipArmor_EquippedArmorShouldHaveCorrectArmorArmorType()
         {
             // Arrenge
-            ArmorType expected = ArmorType.Leather;
+            ArmorType expected = ArmorType.Plate;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            var equippedArmor = ranger.Equipment.Where(kvp => kvp.Key == Slots.Legs).Select(kvp => (Armor?)kvp.Value).ToArray();
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            var equippedArmor = warrior.Equipment.Where(kvp => kvp.Key == Slots.Legs).Select(kvp => (Armor?)kvp.Value).ToArray();
             var actual = equippedArmor[0].ArmorType;
             // Assert
             Assert.Equal(expected, actual);
@@ -268,11 +268,11 @@ namespace RPGHeroesTests.HeroTests
         public void EquipArmor_EquippedArmorShouldHaveCorrectArmorAttributeStrength()
         {
             // Arrenge
-            int expected = 9;
+            int expected = 19;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            var equippedArmor = ranger.Equipment.Where(kvp => kvp.Key == Slots.Legs).Select(kvp => (Armor?)kvp.Value).ToArray();
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            var equippedArmor = warrior.Equipment.Where(kvp => kvp.Key == Slots.Legs).Select(kvp => (Armor?)kvp.Value).ToArray();
             var actual = equippedArmor[0].ArmorAttribute.Strength;
 
             // Assert
@@ -283,11 +283,11 @@ namespace RPGHeroesTests.HeroTests
         public void EquipArmor_EquippedArmorShouldHaveCorrectArmorAttributeDexterity()
         {
             // Arrenge
-            int expected = 6;
+            int expected = 16;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            var equippedArmor = ranger.Equipment.Where(kvp => kvp.Key == Slots.Legs).Select(kvp => (Armor?)kvp.Value).ToArray();
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            var equippedArmor = warrior.Equipment.Where(kvp => kvp.Key == Slots.Legs).Select(kvp => (Armor?)kvp.Value).ToArray();
             var actual = equippedArmor[0].ArmorAttribute.Dexterity;
 
             // Assert
@@ -298,11 +298,11 @@ namespace RPGHeroesTests.HeroTests
         public void EquipArmor_EquippedArmorShouldHaveCorrectArmorAttributeIntelligence()
         {
             // Arrenge
-            int expected = 12;
+            int expected = 22;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            var equippedArmor = ranger.Equipment.Where(kvp => kvp.Key == Slots.Legs).Select(kvp => (Armor?)kvp.Value).ToArray();
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            var equippedArmor = warrior.Equipment.Where(kvp => kvp.Key == Slots.Legs).Select(kvp => (Armor?)kvp.Value).ToArray();
             var actual = equippedArmor[0].ArmorAttribute.Intelligence;
 
             // Assert
@@ -314,9 +314,9 @@ namespace RPGHeroesTests.HeroTests
         {
             // Arrenge
             string expected = "Exception: Hero's required level for item is too low.";
-            
+           
             // Act & Assert
-            Assert.Throws<InvalidRequiredLevelException>(() => ranger.EquipWeapon("Moderate Bow", 4, Slots.Weapon, WeaponType.Bow, 22)).ToString();
+            Assert.Throws<InvalidRequiredLevelException>(() => warrior.EquipWeapon("Basic Hammer", 4, Slots.Weapon, WeaponType.Hammer, 21)).ToString();
         }
 
         [Fact]
@@ -326,7 +326,7 @@ namespace RPGHeroesTests.HeroTests
             string expected = "Exception: Invalid weapon type for this type of Hero.";
 
             // Act & Assert
-            Assert.Throws<InvalidWeaponException>(() => ranger.EquipWeapon("Moderate Bow", 1, Slots.Weapon, WeaponType.Wand, 22)).ToString();
+            Assert.Throws<InvalidWeaponException>(() => warrior.EquipWeapon("Basic Hammer", 1, Slots.Weapon, WeaponType.Bow, 21)).ToString();
         }
 
         [Fact]
@@ -336,7 +336,7 @@ namespace RPGHeroesTests.HeroTests
             string expected = "Exception: Hero's required level for item is too low.";
 
             // Act & Assert
-            Assert.Throws<InvalidRequiredLevelException>(() => ranger.EquipArmor("Golden Boots", 3, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12))).ToString();
+            Assert.Throws<InvalidRequiredLevelException>(() => warrior.EquipArmor("Hyperior Boots", 6, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22))).ToString();
         }
 
         [Fact]
@@ -346,17 +346,17 @@ namespace RPGHeroesTests.HeroTests
             string expected = "Exception: Invalid armor type for this type of Hero.";
 
             // Act & Assert
-            Assert.Throws<InvalidArmorException>(() => ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Cloth, new HeroAttribute(9, 6, 12))).ToString();
+            Assert.Throws<InvalidArmorException>(() => warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Cloth, new HeroAttribute(19, 16, 22))).ToString();
         }
 
         [Fact]
         public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithNoEquipmentForAttributeStrength()
         {
             // Arrenge
-            int expected = 1;
+            int expected = 5;
 
             // Act
-            var actual = ranger.TotalAttributes().Strength;
+            var actual = warrior.TotalAttributes().Strength;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -366,10 +366,10 @@ namespace RPGHeroesTests.HeroTests
         public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithNoEquipmentForAttributeDexterity()
         {
             // Arrenge
-            int expected = 7;
+            int expected = 2;
 
             // Act
-            var actual = ranger.TotalAttributes().Dexterity;
+            var actual = warrior.TotalAttributes().Dexterity;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -382,7 +382,7 @@ namespace RPGHeroesTests.HeroTests
             int expected = 1;
 
             // Act
-            var actual = ranger.TotalAttributes().Intelligence;
+            var actual = warrior.TotalAttributes().Intelligence;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -392,11 +392,11 @@ namespace RPGHeroesTests.HeroTests
         public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithOnePieceOfArmorForAttributeStrength()
         {
             // Arrenge
-            int expected = 10;
+            int expected = 24;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            var actual = ranger.TotalAttributes().Strength;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            var actual = warrior.TotalAttributes().Strength;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -406,11 +406,11 @@ namespace RPGHeroesTests.HeroTests
         public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithOnePieceOfArmorForAttributeDexterity()
         {
             // Arrenge
-            int expected = 13;
+            int expected = 18;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            var actual = ranger.TotalAttributes().Dexterity;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            var actual = warrior.TotalAttributes().Dexterity;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -420,11 +420,11 @@ namespace RPGHeroesTests.HeroTests
         public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithOnePieceOfArmorForAttributeIntelligence()
         {
             // Arrenge
-            int expected = 13;
+            int expected = 23;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            var actual = ranger.TotalAttributes().Intelligence;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            var actual = warrior.TotalAttributes().Intelligence;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -434,42 +434,42 @@ namespace RPGHeroesTests.HeroTests
         public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithTwoPiecesOfArmorForAttributeStrength()
         {
             // Arrenge
-            int expected = 11;
+            int expected = 25;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            ranger.EquipArmor("Basic Helmet", 1, Slots.Head, ArmorType.Leather, new HeroAttribute(1, 2, 3));
-            var actual = ranger.TotalAttributes().Strength;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            warrior.EquipArmor("Basic Helmet", 1, Slots.Head, ArmorType.Plate, new HeroAttribute(1, 2, 1));
+            var actual = warrior.TotalAttributes().Strength;
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueTwoPiecesOfArmorForAttributeDexterity()
+        public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithTwoPieceseOfArmorForAttributeDexterity()
         {
             // Arrenge
-            int expected = 15;
+            int expected = 20;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            ranger.EquipArmor("Basic Helmet", 1, Slots.Head, ArmorType.Leather, new HeroAttribute(1, 2, 3));
-            var actual = ranger.TotalAttributes().Dexterity;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            warrior.EquipArmor("Basic Helmet", 1, Slots.Head, ArmorType.Plate, new HeroAttribute(1, 2, 1));
+            var actual = warrior.TotalAttributes().Dexterity;
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithTwoPiecesfArmorForAttributeIntelligence()
+        public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithTwoPiecesOfArmorForAttributeIntelligence()
         {
             // Arrenge
-            int expected = 16;
+            int expected = 24;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            ranger.EquipArmor("Basic Helmet", 1, Slots.Head, ArmorType.Leather, new HeroAttribute(1, 2, 3));
-            var actual = ranger.TotalAttributes().Intelligence;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            warrior.EquipArmor("Basic Helmet", 1, Slots.Head, ArmorType.Plate, new HeroAttribute(1, 2, 1));
+            var actual = warrior.TotalAttributes().Intelligence;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -479,12 +479,12 @@ namespace RPGHeroesTests.HeroTests
         public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithReplacedArmorForAttributeStrength()
         {
             // Arrenge
-            int expected = 2;
+            int expected = 6;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            ranger.EquipArmor("Basic Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(1, 2, 3));
-            var actual = ranger.TotalAttributes().Strength;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            warrior.EquipArmor("Basic Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(1, 2, 1));
+            var actual = warrior.TotalAttributes().Strength;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -494,12 +494,12 @@ namespace RPGHeroesTests.HeroTests
         public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithReplacedArmorForAttributeDexterity()
         {
             // Arrenge
-            int expected = 9;
+            int expected = 4;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            ranger.EquipArmor("Basic Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(1, 2, 3));
-            var actual = ranger.TotalAttributes().Dexterity;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            warrior.EquipArmor("Basic Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(1, 2, 1));
+            var actual = warrior.TotalAttributes().Dexterity;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -509,12 +509,12 @@ namespace RPGHeroesTests.HeroTests
         public void TotalAttributes_TotalAttributesShouldCalculateCorrectValueWithReplacedArmorForAttributeIntelligence()
         {
             // Arrenge
-            int expected = 4;
+            int expected = 2;
 
             // Act
-            ranger.EquipArmor("Golden Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(9, 6, 12));
-            ranger.EquipArmor("Basic Boots", 1, Slots.Legs, ArmorType.Leather, new HeroAttribute(1, 2, 3));
-            var actual = ranger.TotalAttributes().Intelligence;
+            warrior.EquipArmor("Hyperior Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(19, 16, 22));
+            warrior.EquipArmor("Basic Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(1, 2, 1));
+            var actual = warrior.TotalAttributes().Intelligence;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -527,7 +527,7 @@ namespace RPGHeroesTests.HeroTests
             int expected = 1;
 
             // Act
-            var actual = ranger.Damage();
+            var actual = warrior.Damage();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -537,26 +537,26 @@ namespace RPGHeroesTests.HeroTests
         public void Damage_DamageWithEquippedWeaponShouldCalculateCorrectValueForDamage()
         {
             // Arrenge
-            double expected = 21.4;
+            double expected = 35.7;
 
             // Act
-            ranger.EquipWeapon("Moderate Bow", 1, Slots.Weapon, WeaponType.Bow, 20);
-            var actual = ranger.Damage();
+            warrior.EquipWeapon("Golden Axe", 1, Slots.Weapon, WeaponType.Axe, 34);
+            var actual = warrior.Damage();
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void Damage_DamageWithReplacedWeaponShouldCalculateCorrectValueForDamage()
+        public void Damage_DamageWithReplaceddWeaponShouldCalculateCorrectValueForDamage()
         {
             // Arrenge
-            double expected = 58.85;
+            double expected = 26.25;
 
             // Act
-            ranger.EquipWeapon("Moderate Bow", 1, Slots.Weapon, WeaponType.Bow, 20);
-            ranger.EquipWeapon("Super Bow", 1, Slots.Weapon, WeaponType.Bow, 55);
-            var actual = ranger.Damage();
+            warrior.EquipWeapon("Golden Axe", 1, Slots.Weapon, WeaponType.Axe, 34);
+            warrior.EquipWeapon("Fire Sword", 1, Slots.Weapon, WeaponType.Sword, 25);
+            var actual = warrior.Damage();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -566,12 +566,12 @@ namespace RPGHeroesTests.HeroTests
         public void Damage_DamageWithEquippedWeaponAndEquippedArmorShouldCalculateCorrectValueForDamage()
         {
             // Arrenge
-            double expected = 24.2;
+            double expected = 37.06;
 
             // Act
-            ranger.EquipWeapon("Moderate Bow", 1, Slots.Weapon, WeaponType.Bow, 20);
-            ranger.EquipArmor("Super Helmet", 1, Slots.Head, ArmorType.Mail, new HeroAttribute(13, 14, 15));
-            var actual = ranger.Damage();
+            warrior.EquipWeapon("Golden Axe", 1, Slots.Weapon, WeaponType.Axe, 34);
+            warrior.EquipArmor("Fighting Boots", 1, Slots.Legs, ArmorType.Plate, new HeroAttribute(4, 7, 8));
+            var actual = warrior.Damage();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -582,10 +582,10 @@ namespace RPGHeroesTests.HeroTests
         {
 
             // Arrenge
-            string expected = "Hero Name: Ralph \nHero Class: Ranger \nHero Level: 1 \nHero's total strength: 1 \nHero's total Dexterity: 7 \nHero's total intelligence: 1 \nHero's total damage: 1\n";
+            string expected = "Hero Name: Maximus \nHero Class: Warrior \nHero Level: 1 \nHero's total strength: 5 \nHero's total Dexterity: 2 \nHero's total intelligence: 1 \nHero's total damage: 1\n";
 
             // Act
-            var actual = ranger.Display();
+            var actual = warrior.Display();
 
             // Assert
             Assert.Equal(expected, actual);

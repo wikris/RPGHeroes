@@ -20,12 +20,7 @@ namespace RPGHeroes.Hero
             this.Intelligence = intelligence;
         }
 
-        public HeroAttribute AddTwoHeroAttributeForSum(HeroAttribute old, HeroAttribute newHerosAttribute)
-        {
-            HeroAttribute heroAttribute = old + newHerosAttribute;
-            return heroAttribute;
-        }
-
+        // Makes possible to add two HeroAttribute together
         public static HeroAttribute operator +(HeroAttribute lhs, HeroAttribute rhs)
         {
             return new HeroAttribute (lhs.Strength + rhs.Strength, lhs.Dexterity + rhs.Dexterity, lhs.Intelligence + rhs.Intelligence );

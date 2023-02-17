@@ -9,6 +9,7 @@ namespace RPGHeroes.Hero
 {
     public class Warrior:Hero
     {
+        // Creating Hero type of Warrior
         public Warrior(string name) : base(name)
         {
             this.Name = name;
@@ -17,6 +18,7 @@ namespace RPGHeroes.Hero
             this.ValidArmorTypes = new ArmorType[] { ArmorType.Mail, ArmorType.Plate };
         }
 
+        // Levels up heros current level and LevelAttributes
         public override void LevelUp()
         {
             this.Level++;
@@ -24,6 +26,7 @@ namespace RPGHeroes.Hero
             this.LevelAttributes += levelingUpHeroAttribute;
         }
 
+        // Calculates how much Damage Hero does
         public override double Damage()
         {
             var equippedWeapon = Equipment.Where(kvp => kvp.Key == Slots.Weapon).Select(kvp => (Weapon?)kvp.Value).ToArray();
